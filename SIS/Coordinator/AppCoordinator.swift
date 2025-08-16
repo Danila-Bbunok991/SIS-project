@@ -10,7 +10,8 @@ final class AppCoordinator: Coordinator {
     func start() {
         showFirstVC()
     }
-
+    
+    //Вызов начального экрана
     private func showFirstVC() {
         let viewModel = FirstViewModel()
         let viewController = ViewController(viewModel: viewModel)
@@ -24,6 +25,7 @@ final class AppCoordinator: Coordinator {
         
     }
     
+    //Вызов экрана входа
     private func showEntranceVC() {
         let viewModel = EntranceViewModel()
         let viewController = EntranceViewController(viewModel: viewModel)
@@ -34,6 +36,7 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов второго экрана входа
     private func showEntranceFirstVC() {
         let viewModel = EntranceViewModel()
         let viewController = EntranceFirstVC(viewModel: viewModel)
@@ -47,6 +50,7 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов экрана для создания пароля
     private func showPasswordVC() {
         let viewModel = PasswordViewModel()
         let viewController = PasswordViewController(viewModel: viewModel)
@@ -57,17 +61,20 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов второго экрана создания пароля
     private func showPasswordFirstVC() {
         let viewController = PasswordFirstVC()
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов экрана поддержки
     private func showSupportVC() {
         let viewController = SupportViewController()
 
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов экрана регистрации
     private func showRegistrationVC() {
         let viewModel = RegistrationViewModel()
         let viewController = RegistrationViewController(viewModel: viewModel)
@@ -78,6 +85,7 @@ final class AppCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    //Вызов второго экрана регистрации
     private func showRegistrationFirstVC() {
         let viewModel = RegistrationViewModel()
         let viewController = RegistrationFirstVC(viewModel: viewModel)

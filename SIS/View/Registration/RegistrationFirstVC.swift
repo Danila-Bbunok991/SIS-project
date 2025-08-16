@@ -3,6 +3,7 @@ import UIKit
 class RegistrationFirstVC: UIViewController {
     //MARK: Private initialization
     
+    //Создание viewModel
     private let viewModel: RegistrationViewModel
     
     init(onButtonTapped: (() -> Void)? = nil, viewModel: RegistrationViewModel) {
@@ -21,6 +22,7 @@ class RegistrationFirstVC: UIViewController {
     private var timer: Timer?
     private var remainingSeconds = 300 //5 минут
     
+    //Создание основного стека
     private lazy var mainStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
             secondLabel,
@@ -35,6 +37,7 @@ class RegistrationFirstVC: UIViewController {
         return stack
     }()
     
+    //Создание второстепенного стека
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -43,6 +46,7 @@ class RegistrationFirstVC: UIViewController {
         return stack
     }()
     
+    //Создание первого label
     private lazy var firstLabel: UILabel = {
         let label = UILabel()
         label.widthAnchor.constraint(equalToConstant: 211).isActive = true
@@ -54,6 +58,7 @@ class RegistrationFirstVC: UIViewController {
         return label
     }()
     
+    //Создание второго label
     private lazy var secondLabel: UILabel = {
         let label = UILabel()
         label.widthAnchor.constraint(equalToConstant: 165).isActive = true
@@ -65,6 +70,7 @@ class RegistrationFirstVC: UIViewController {
         return label
     }()
     
+    //Создание третьего label
     private lazy var thirdLabel: UILabel = {
         let label = UILabel()
         label.widthAnchor.constraint(equalToConstant: 182).isActive = true
@@ -77,6 +83,7 @@ class RegistrationFirstVC: UIViewController {
         return label
     }()
     
+    //Создание четвёртого label
     private lazy var fourthLabel: UILabel = {
         let label = UILabel()
         label.widthAnchor.constraint(equalToConstant: 185).isActive = true
@@ -89,6 +96,7 @@ class RegistrationFirstVC: UIViewController {
         return label
     }()
     
+    //Создание пятого label
     private lazy var fifthLabel: UILabel = {
         // Create a new Attributed String
         let attributedString = NSMutableAttributedString.init(string: "Я не получил код!")
@@ -115,6 +123,7 @@ class RegistrationFirstVC: UIViewController {
         return label
     }()
     
+    //Создание кнопки регистрации
     private lazy var registrationButton: UIButton = {
         let button = UIButton()
         button.widthAnchor.constraint(equalToConstant: 319).isActive = true
@@ -142,6 +151,8 @@ class RegistrationFirstVC: UIViewController {
         fillTextFields()
         startTimer()
     }
+    
+    //MARK: Private setup
     
     private func setupViews() {
         view.addSubview(mainStackView)

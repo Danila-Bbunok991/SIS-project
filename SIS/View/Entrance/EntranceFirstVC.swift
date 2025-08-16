@@ -219,13 +219,6 @@ class EntranceFirstVC: UIViewController {
         textField.clipsToBounds = true
         
     }
-        
-    //Создание alert
-//    func showAlert(message:String) {
-//        let alertVC = UIAlertController(title:nil, message: message, preferredStyle:.alert)
-//        alertVC.addAction(UIAlertAction(title:"OK", style:.default))
-//        present(alertVC, animated:true)
-//    }
     
     //Заполнение TextField
     private func fillTextFields() {
