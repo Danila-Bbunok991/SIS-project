@@ -1,11 +1,13 @@
 import UIKit
 
 class PasswordFirstVC: UIViewController {
+    //MARK: Private initialization
     
+    //Создание основного стека
     private lazy var mainStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
             firstView,
-            button
+            entranceButton
         ])
         stack.axis = .vertical
         stack.alignment = .center
@@ -35,7 +37,7 @@ class PasswordFirstVC: UIViewController {
         return label
     }()
     
-    private lazy var button: UIButton = {
+    private lazy var entranceButton: UIButton = {
         let button = UIButton()
         button.widthAnchor.constraint(equalToConstant: 330).isActive = true
         button.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -61,6 +63,8 @@ class PasswordFirstVC: UIViewController {
     
         setupViews()
     }
+    
+    //MARK: Private setup
     
     private func setupViews() {
         view.addSubview(mainStackView)

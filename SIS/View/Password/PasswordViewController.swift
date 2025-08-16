@@ -1,6 +1,7 @@
 import UIKit
 
 class PasswordViewController: UIViewController {
+    //MARK: Private initialization
     
     private let viewModel: PasswordViewModel
     
@@ -13,14 +14,31 @@ class PasswordViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var array: [UITextField] = []
+    //Создание градиента
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        
+        //Цвет градиента
+        gradient.colors = [
+            UIColor(named: "firstColor")?.cgColor as Any,
+            UIColor(named: "secondColor")?.cgColor as Any,
+            UIColor(named: "thirdColor")?.cgColor as Any,
+            UIColor(named: "fourthColor")?.cgColor as Any,
+            UIColor(named: "fifthColor")?.cgColor as Any
+        ]
+        gradient.startPoint = CGPoint(x: 0, y: 1) //Слева направо
+        gradient.endPoint = CGPoint(x: 2, y: 1)
+        gradient.frame = CGRect(x: 0, y: 0, width: 319, height: 50)
+        return gradient
+    }()
     
+    //Создание основного стека
     private lazy var mainStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
             secondLabel,
             thirdLabel,
-            firstTextField,
-            button,
+            passwordTextField,
+            skipButton,
         ])
         stack.axis = .vertical
         stack.alignment = .center
@@ -60,7 +78,7 @@ class PasswordViewController: UIViewController {
         return label
     }()
     
-    private lazy var firstTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.widthAnchor.constraint(equalToConstant: 180).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -83,15 +101,17 @@ class PasswordViewController: UIViewController {
         return textField
     }()
     
-    private lazy var button: UIButton = {
+    private lazy var skipButton: UIButton = {
         let button = UIButton()
         button.widthAnchor.constraint(equalToConstant: 319).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.backgroundColor = .blue
+       
         button.titleLabel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
         button.titleLabel?.heightAnchor.constraint(equalToConstant: 20).isActive = true
         button.setTitle("Пропустить", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        button.layer.insertSublayer(gradientLayer, at: 0)
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.titleLabel?.textAlignment = .center
@@ -109,6 +129,8 @@ class PasswordViewController: UIViewController {
         setupViews()
     }
     
+    //MARK: Private setup
+    
     private func setupViews() {
         view.addSubview(mainStackView)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +146,7 @@ class PasswordViewController: UIViewController {
         // Устанавливаем индивидуальные отступы
         mainStackView.setCustomSpacing(47, after: secondLabel)
         mainStackView.setCustomSpacing(36, after: thirdLabel)
-        mainStackView.setCustomSpacing(77, after: firstTextField)
+        mainStackView.setCustomSpacing(77, after: passwordTextField)
     }
     
     @objc func buttonTapped(_ gestureRecognizer: UITapGestureRecognizer) {

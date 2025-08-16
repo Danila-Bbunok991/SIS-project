@@ -148,11 +148,13 @@ class EntranceFirstVC: UIViewController {
         let button = UIButton()
         button.widthAnchor.constraint(equalToConstant: 319).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.layer.insertSublayer(gradientLayer, at: 0)
+        
         button.titleLabel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
         button.titleLabel?.heightAnchor.constraint(equalToConstant: 20).isActive = true
         button.setTitle("Войти", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        button.layer.insertSublayer(gradientLayer, at: 0)
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.titleLabel?.textAlignment = .center

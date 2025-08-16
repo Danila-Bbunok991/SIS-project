@@ -18,6 +18,24 @@ class RegistrationFirstVC: UIViewController {
     //Создание массива, где будут храниться TextField
     private var textFieldArray: [UITextField] = []
     
+    //Создание градиента
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        
+        //Цвет градиента
+        gradient.colors = [
+            UIColor(named: "firstColor")?.cgColor as Any,
+            UIColor(named: "secondColor")?.cgColor as Any,
+            UIColor(named: "thirdColor")?.cgColor as Any,
+            UIColor(named: "fourthColor")?.cgColor as Any,
+            UIColor(named: "fifthColor")?.cgColor as Any
+        ]
+        gradient.startPoint = CGPoint(x: 0, y: 1) //Слева направо
+        gradient.endPoint = CGPoint(x: 2, y: 1)
+        gradient.frame = CGRect(x: 0, y: 0, width: 319, height: 50)
+        return gradient
+    }()
+    
     //Создание таймера
     private var timer: Timer?
     private var remainingSeconds = 300 //5 минут
@@ -128,11 +146,13 @@ class RegistrationFirstVC: UIViewController {
         let button = UIButton()
         button.widthAnchor.constraint(equalToConstant: 319).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.backgroundColor = .blue
+
         button.titleLabel?.widthAnchor.constraint(equalToConstant: 160).isActive = true
         button.titleLabel?.heightAnchor.constraint(equalToConstant: 20).isActive = true
         button.setTitle("Зарегистрироваться", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        button.layer.insertSublayer(gradientLayer, at: 0)
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.titleLabel?.textAlignment = .center
@@ -190,7 +210,7 @@ class RegistrationFirstVC: UIViewController {
         textField.textColor = .white
         
         // Устанавливаем цвет границы
-        textField.layer.borderColor = UIColor.blue.cgColor
+        textField.layer.borderColor = UIColor(named: "secondColor")?.cgColor
         // Устанавливаем ширину границы
         textField.layer.borderWidth = 2.0
         
